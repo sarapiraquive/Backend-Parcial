@@ -12,7 +12,7 @@ public class Controller {
 
     public Controller() {
         this.librosList = new ArrayList<>();
-        librosList.add(new Libros("Principito", "Antoine de Saint-Exupéry", "Ficcion"));
+        librosList.add(new Libros("Principito", "Antoine de Saint-Exupéry", "Ficcion",1234));
     }
 
         @GetMapping(path = "/libros/todos")
@@ -38,5 +38,21 @@ public class Controller {
         return new Respuesta("Libro creado correctamente");
     }
 
+    @DeleteMapping(path = "/libro/eliminar/{codigoLibro}")
+    public Respuesta eliminarLibroPorCodigo(@PathVariable int codigoLibro) {
+        Libros libroAEliminar = null;
+        for (Libros estudiante : librosList) {
+            if (estudiante.getCodigoLibro() == codigoLibro) {
+                libroAEliminar = estudiante;
+                break;
+            }
+        }
+        if (libroAEliminar != null) {
+            librosList.remove(libroAEliminar);
+            return new Respuesta("Libro eliminado correctamente");
+        } else {
+            return new Respuesta("No se encontró un libro con el código digitado");
+        }
+    }
 
 }
