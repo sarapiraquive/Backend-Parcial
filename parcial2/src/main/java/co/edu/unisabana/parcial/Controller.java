@@ -1,9 +1,6 @@
 package co.edu.unisabana.parcial;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +31,12 @@ public class Controller {
         return busquedaTitulo;
     }
 
+    @PostMapping(path = "/libro/crear")
+    public Respuesta crearLibro (@RequestBody Libros libros) {
+        libros.setCodigoLibro((int) (Math.random() * 1000));
+        librosList.add(libros);
+        return new Respuesta("Libro creado correctamente");
+    }
 
 
 }
