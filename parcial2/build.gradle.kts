@@ -14,8 +14,9 @@ repositories {
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("org.projectlombok:lombok:1.18.20")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
+	compileOnly("org.projectlombok:lombok:1.18.24")
+	annotationProcessor("org.projectlombok:lombok:1.18.24")
+	testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
 tasks.withType<Test> {

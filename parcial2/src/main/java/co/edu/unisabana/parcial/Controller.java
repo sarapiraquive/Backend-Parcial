@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/libros")
 public class Controller {
     List<Libros> librosList;
 
@@ -15,8 +14,8 @@ public class Controller {
         librosList.add(new Libros("Principito", "Antoine de Saint-Exupéry", "Ficcion",1234));
     }
 
-        @GetMapping(path = "/libros/todos")
-        public List<Libros> obtenerLibros() {
+    @GetMapping(path = "/libros/todos")
+    public List<Libros> obtenerLibros() {
             return librosList;
         }
 
@@ -29,6 +28,17 @@ public class Controller {
             }
         }
         return busquedaTitulo;
+    }
+
+    @GetMapping(path = "/libros/buscar/{autor}")
+    public List<Libros> obtenerLibrosPorAutor(@RequestParam String autor) {
+        List<Libros> busquedaAutor = new ArrayList<>();
+        for (Libros libros : librosList) {
+            if (libros.getAutor().equals(autor)) {
+                busquedaAutor.add(libros);
+            }
+        }
+        return busquedaAutor;
     }
 
     @PostMapping(path = "/libro/crear")
