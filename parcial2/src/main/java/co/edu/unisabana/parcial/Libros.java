@@ -12,7 +12,7 @@ import lombok.Setter;
 public class Libros {
         private String titulo;
         private String autor;
-        private String categoria;
-        private int codigoLibro;
+        private String genero;
+        private int id;
 
 }
