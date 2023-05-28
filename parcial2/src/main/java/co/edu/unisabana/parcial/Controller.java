@@ -11,7 +11,9 @@ public class Controller {
 
     public Controller() {
         this.librosList = new ArrayList<>();
-        librosList.add(new Libros("principito", "sara", "ficcion",123));
+        librosList.add(new Libros("Principito", "Sara", "Ficcion",123));
+        librosList.add(new Libros("Caperucita", "Sara", "Fantasia",111));
+        librosList.add(new Libros("Don Quijote", "Cervantes", "Historia",222));
     }
 
     @GetMapping(path = "/libros/todos")
