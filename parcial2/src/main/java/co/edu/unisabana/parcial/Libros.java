@@ -15,5 +15,6 @@ public class Libros {
         private String autor;
         private String genero;
         private int id;
+        private String descripcion;
 
 }
