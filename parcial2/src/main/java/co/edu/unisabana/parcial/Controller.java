@@ -40,29 +40,29 @@ public class Controller {
         return new Libros();
     }
 
-    @GetMapping(path = "/libro/buscar/categoria/{categoria}")
-    public List<Libros> obtenerLibrosPorCategoria(@PathVariable String categoria) {
-        List<Libros> busquedaCategoria = new ArrayList<>();
+    @GetMapping(path = "/libro/buscar/categoria/{genero}")
+    public List<Libros> obtenerLibrosPorGenero(@PathVariable String genero) {
+        List<Libros> busquedaGenero = new ArrayList<>();
         for (Libros libros : librosList) {
-            if (libros.getCategoria().equals(categoria)) {
-                busquedaCategoria.add(libros);
+            if (libros.getGenero().equals(genero)) {
+                busquedaGenero.add(libros);
             }
         }
-        return busquedaCategoria;
+        return busquedaGenero;
     }
 
     @PostMapping(path = "/libro/crear")
     public Respuesta crearLibro (@RequestBody Libros libros) {
-        libros.setCodigoLibro((int) (Math.random() * 1000));
+        libros.setId((int) (Math.random() * 1000));
         librosList.add(libros);
         return new Respuesta("Libro creado correctamente");
     }
 
-    @DeleteMapping(path = "/libro/eliminar/{codigoLibro}")
-    public Respuesta eliminarLibroPorCodigo(@PathVariable int codigoLibro) {
+    @DeleteMapping(path = "/libro/eliminar/{id}")
+    public Respuesta eliminarLibroPorCodigo(@PathVariable int id) {
         Libros libroAEliminar = null;
         for (Libros estudiante : librosList) {
-            if (estudiante.getCodigoLibro() == codigoLibro) {
+            if (estudiante.getId() == id) {
                 libroAEliminar = estudiante;
                 break;
             }
