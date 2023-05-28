@@ -11,27 +11,16 @@ public class Controller {
 
     public Controller() {
         this.librosList = new ArrayList<>();
-        librosList.add(new Libros("Principito", "Antoine de Saint-Exupéry", "Ficcion",1234));
+        librosList.add(new Libros("principito", "sara", "ficcion",123));
     }
 
     @GetMapping(path = "/libros/todos")
     public List<Libros> obtenerLibros() {
-            return librosList;
-        }
-
-    @GetMapping(path = "/libros/buscar/{titulo}")
-    public List<Libros> obtenerLibrosPorTitulo(@RequestParam String titulo) {
-        List<Libros> busquedaTitulo = new ArrayList<>();
-        for (Libros libros : librosList) {
-            if (libros.getTitulo().equals(titulo)) {
-                busquedaTitulo.add(libros);
-            }
-        }
-        return busquedaTitulo;
+        return librosList;
     }
 
-    @GetMapping(path = "/libros/buscar/{autor}")
-    public List<Libros> obtenerLibrosPorAutor(@RequestParam String autor) {
+    @GetMapping(path = "/libro/buscar/autor/{autor}")
+    public List<Libros> obtenerLibrosPorAutor(@PathVariable String autor) {
         List<Libros> busquedaAutor = new ArrayList<>();
         for (Libros libros : librosList) {
             if (libros.getAutor().equals(autor)) {
@@ -39,6 +28,27 @@ public class Controller {
             }
         }
         return busquedaAutor;
+    }
+
+    @GetMapping(path = "/libro/buscar/titulo/{titulo}")
+    public Libros obtenerLibroPorTitulo (@PathVariable String titulo) {
+        for (Libros libros : librosList) {
+            if (libros.getTitulo().equals(titulo)) {
+                return libros;
+            }
+        }
+        return new Libros();
+    }
+
+    @GetMapping(path = "/libro/buscar/categoria/{categoria}")
+    public List<Libros> obtenerLibrosPorCategoria(@PathVariable String categoria) {
+        List<Libros> busquedaCategoria = new ArrayList<>();
+        for (Libros libros : librosList) {
+            if (libros.getCategoria().equals(categoria)) {
+                busquedaCategoria.add(libros);
+            }
+        }
+        return busquedaCategoria;
     }
 
     @PostMapping(path = "/libro/crear")
