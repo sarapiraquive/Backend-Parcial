@@ -11,9 +11,9 @@ public class Controller {
 
     public Controller() {
         this.librosList = new ArrayList<>();
-        librosList.add(new Libros("Principito", "Sara", "Ficcion",123,"\"El Principito\": un cuento poético sobre un príncipe en busca de significado y amistad en el universo."));
-        librosList.add(new Libros("Caperucita Roja", "Sara", "Fantasia",111,"\"Caperucita Roja\" es un popular cuento de hadas en el que una niña llamada Caperucita Roja se aventura a través del bosque para visitar a su abuela. Sin embargo, se encuentra con un lobo astuto que intenta engañarla. La historia resalta lecciones sobre la obediencia, la precaución y los peligros de confiar en extraños."));
-        librosList.add(new Libros("Don Quijote", "Cervantes", "Historia",222,"\"Don Quijote\": La historia de un caballero loco que confunde la realidad con la fantasía mientras lucha contra molinos de viento."));
+        librosList.add(new Libros("Principito", "Sara", "Ficcion",123," Un cuento poético sobre un príncipe en busca de significado y amistad en el universo."));
+        librosList.add(new Libros("Caperucita Roja", "Sara", "Fantasia",111,"Es un popular cuento de hadas en el que una niña llamada Caperucita Roja se aventura a través del bosque para visitar a su abuela. Sin embargo, se encuentra con un lobo astuto que intenta engañarla. La historia resalta lecciones sobre la obediencia, la precaución y los peligros de confiar en extraños."));
+        librosList.add(new Libros("Don Quijote", "Cervantes", "Historia",222," La historia de un caballero loco que confunde la realidad con la fantasía mientras lucha contra molinos de viento."));
     }
 
     @GetMapping(path = "/libros/todos")
